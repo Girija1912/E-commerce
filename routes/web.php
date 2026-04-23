@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'home'])->name('index');
 
+Route::get('/product_detail/{id}', [UserController::class, 'productdetail'])->name('product_detail');
+
 Route::get('/dashboard', [UserController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -20,7 +22,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('/view_category', [AdminController::class, "viewcategory"])->name('admin.viewcategory');
     Route::get('/delete_category/{id}', [AdminController::class, 'deleteCategory'])->name('admin.categorydelete');
     Route::get('/update_category/{id}', [AdminController::class, 'updatecategory'])->name('admin.categoryupdate');
-    Route::post('/update_category/{Id}', [AdminController::class, 'postupdatecategory'])->name('admin.postupdatecategory');
+    Route::post('/update_category/{id}', [AdminController::class, 'postupdatecategory'])->name('admin.postupdatecategory');
 
     Route::get('/add_product', [AdminController::class, 'addproduct'])->name('admin.addproduct');
     Route::post('/add_product', [AdminController::class, 'postaddproduct'])->name('admin.postaddproduct');
@@ -28,7 +30,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('/delete_product/{id}', [AdminController::class, 'deleteProduct'])->name('admin.productdelete');
     Route::get('/update_product/{id}', [AdminController::class, 'updateproduct'])->name('admin.updateproduct');
     Route::post('/update_product/{id}', [AdminController::class, 'postupdateproduct'])->name('admin.postupdateproduct');
-    Route::post('/search', [AdminController::class, 'searchproduct'])->name('admin.searchproduct');
+    Route::any('/search', [AdminController::class, 'searchproduct'])->name('admin.searchproduct');
 });
 
 Route::middleware('auth')->group(function () {

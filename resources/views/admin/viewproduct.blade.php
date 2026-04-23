@@ -2,7 +2,7 @@
 
 @section('view_product')
 <div class="list-inline-item">
-    <form action="{{route('admin.searchproduct')}}" method="post">
+    <form action="{{route('admin.searchproduct')}}" method="POST">
         @csrf
         <div class="form-group">
             <input type="search" name="search" placeholder="What are you searching for...">
