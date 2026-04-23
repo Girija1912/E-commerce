@@ -1,8 +1,15 @@
 @extends('admin.maindesign')
 
-
 @section('view_product')
-
+<div class="list-inline-item">
+    <form action="{{route('admin.searchproduct')}}" method="post">
+        @csrf
+        <div class="form-group">
+            <input type="search" name="search" placeholder="What are you searching for...">
+            <button type="submit" class="submit">Search</button>
+        </div>
+    </form>
+</div>
 @if(session('deleteproduct_message'))
 
 <div style="background-color: orange; color:black">
@@ -32,8 +39,8 @@
             <td>{{$product->product_description}}</td>
             <td>{{$product->product_quantity}}</td>
             <td>{{$product->product_price}}</td>
-            <td>{{$product->product_image}}</td>
-            <td>{{$product->product_category}}</td>
+            <td><img src="{{asset('products/'.$product->product_image)}}" style="height:100px; width:80px">{{$product->product_image}}</td>
+            <td>{{ optional($product->category)->category }}</td>
             <td>
                 <a href="{{route('admin.updateproduct',$product->id)}}"
                     style="color:green">
@@ -47,6 +54,9 @@
             </td>
         </tr>
         @endforeach
+
+        {{$products->links()}}
+        <!-- for pagination purpose   -->
     </tbody>
 </table>
 

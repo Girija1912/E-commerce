@@ -16,15 +16,21 @@
         <textarea name="product_description" id="">{{$products->product_description}}</textarea>
         <input type="number" name="product_quantity" value="{{$products->product_quantity}}">
         <input type="number" name="product_price" value="{{$products->product_price}}">
-        <input type="file" name="product_image" value="{{$products->product_image}}">
+
+        @if($products->product_image)
+        <img src="{{asset('products/'.$products->product_image)}}" style="width:80">
+        @endif
+
+        <input type="file" name="product_image">
         <select name="product_category">
             @foreach($categories as $category)
-            <option value="{{ $category->category }}"
-                {{ $products->product_category == $category->category ? 'selected' : '' }}>
+            <option value="{{ $category->id }}"
+                {{ $products->product_category == $category->id ? 'selected' : '' }}>
                 {{ $category->category }}
             </option>
             @endforeach
         </select>
+
         <input type="submit" name="submit" value="Update Product">
     </form>
 </div>

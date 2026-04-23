@@ -3,7 +3,7 @@
 @section('add_product')
 
 @if(session('product_message'))
-<div class="gb-4 bg-green-100 border-green-400 text-green-700 px-4 py-3 rounded relative">
+<div style="background-color: green; color: white">
     {{session('product_message')}}
 </div>
 @endif
@@ -13,14 +13,18 @@
         @csrf
         <input type="text" name="product_title" placeholder="Enter category name">
         <textarea name="product_description" id="">Product Description...</textarea>
-        <input type="number" name="product_quantity" placeholder="Enter product price">
-        <input type="number" name="product_price" placeholder="Enter product quantity">
+        <input type="number" name="product_quantity" placeholder="Enter product quantity">
+        <input type="number" name="product_price" placeholder="Enter product price">
+
         <input type="file" name="product_image">
-        <select>
+        <select name="product_category">
             @foreach($categories as $category)
-            <option value="{{$category->category}}">{{$category->category}}</option>
+            <option value="{{ $category->id }}">
+                {{ $category->category }}
+            </option>
             @endforeach
         </select>
+
         <input type="submit" name="submit" value="Add Product">
     </form>
 </div>
