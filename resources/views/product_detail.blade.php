@@ -3,6 +3,14 @@
 <base href="/public">
 @section('product_detail')
 
+@if(session('cart_message'))
+
+<div style="background-color: orange; color:black">
+    {{session('cart_message')}}
+</div>
+
+@endif
+
 <div style="max-width:800px; margin:30px auto; padding:20px; border:1px solid #ddd; border-radius:10px;">
 
     <h2 style="text-align:center;">Product Details</h2>
@@ -17,7 +25,6 @@
     <div style="flex:1;">
         <h2>{{ $product->product_title }}</h2>
 
-
         <h3 style="color:green;">₹{{ $product->product_price }}</h3>
 
         <p>
@@ -31,9 +38,9 @@
 
         <!-- Buttons -->
         <div style="margin-top:20px;">
-            <button style="padding:10px 20px; background:#ff9900; border:none; color:white; border-radius:5px;">
+            <a href="{{route('add_to_cart',$product->id)}}" style="padding:10px 20px; background:#ff9900; border:none; color:white; border-radius:5px;">
                 Add to Cart
-            </button>
+            </a>
 
             <button style="padding:10px 20px; background:#007bff; border:none; color:white; border-radius:5px;">
                 Buy Now

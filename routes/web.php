@@ -11,7 +11,14 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'home'])->name('index');
 
+
 Route::get('/product_detail/{id}', [UserController::class, 'productdetail'])->name('product_detail');
+Route::get('/viewallproducts', [UserController::class, 'viewallproducts'])->name('viewallproduct');
+Route::get('/addtocart/{id}', [UserController::class, 'addtocart'])
+    ->middleware(['auth', 'verified'])->name('add_to_cart');
+
+Route::get('/cartproducts', [UserController::class, 'cartproducts'])->middleware(['auth', 'verified'])->name('cartproducts');
+Route::get('/removecartproduct/{id}', [UserController::class, 'removecartproduct'])->middleware(['auth', 'verified'])->name('removecartproduct');
 
 Route::get('/dashboard', [UserController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');

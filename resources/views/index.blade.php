@@ -41,7 +41,7 @@
 
 
 <div class="btn-box">
-  <a href="">
+  <a href="{{route('viewallproduct')}}">
     View All Products
   </a>
 </div>

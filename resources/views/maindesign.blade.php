@@ -91,8 +91,8 @@
                             </span>
                         </a>
                         @endif
-                        <a href="">
-                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        <a href="{{route('cartproducts')}}">
+                            <i class="fa fa-shopping-bag" aria-hidden="true">{{$count}}</i>
                         </a>
                         <form class="form-inline ">
                             <button class="btn nav_search-btn" type="submit">
@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="col-md-5 ">
                                         <div class="img-box">
-                                            <img style="width:600px" src="public/frontend/images/image3.jpeg" alt="" />
+                                            <img style="width:600px" src="frontend/images/image3.jpeg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -152,6 +152,10 @@
         @yield('index')
 
         @yield('product_detail')
+
+        @yield('viewallproducts')
+
+        @yield('viewcartsproduct')
     </section>
     <!-- end shop section -->
 
