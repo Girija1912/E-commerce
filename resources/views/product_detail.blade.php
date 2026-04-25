@@ -42,9 +42,9 @@
                 Add to Cart
             </a>
 
-            <button style="padding:10px 20px; background:#007bff; border:none; color:white; border-radius:5px;">
-                Buy Now
-            </button>
+            <a href="#" style="padding:10px 20px; background:#ff9900; border:none; color:white; border-radius:5px;">
+                Buy
+            </a>
         </div>
     </div>
 

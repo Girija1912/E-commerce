@@ -27,6 +27,14 @@
               </span>
             </h6>
           </div>
+          <div style="margin-top:20px;">
+            <a href="{{route('add_to_cart',$product->id)}}" style="padding:10px 20px; background:#ff9900; border:none; color:white; border-radius:5px;">
+              Add to Cart
+            </a>
+            <a href="#" style="padding:10px 20px; background:#ff9900; border:none; color:white; border-radius:5px;">
+              Buy
+            </a>
+          </div>
           <div class="new">
             <span>
               New
