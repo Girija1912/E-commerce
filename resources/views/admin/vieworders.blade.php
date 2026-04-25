@@ -13,7 +13,7 @@
             <th>Product_price</th>
             <th>Product_image</th>
             <th>Status</th>
-            <th>Action</th>
+
         </tr>
     </thead>
     <tbody>
@@ -26,26 +26,17 @@
             <td>{{ optional($order->product)->product_price }}</td>
             <td><img src="{{ asset('products/'.optional($order->product)->product_image) }}" style=" height:100px; width:80px"></td>
             <td>
-                <form action="" method="POST">
+                <form action="{{route('admin.change_status',$order->id)}}" method="POST">
+                    @csrf
                     <select name="status" id="">
                         <option value="{{$order->status}}">{{$order->status}}</option>
                         <option value="Delivered">Delivered</option>
                         <option value="pending">pending</option>
                     </select>
-                    <input type="submit" value="submit" name="submit">
+                    <input type="submit" value="submit" name="submit" onclick="return confirm('Are you sure?')">
                 </form>
             </td>
-            <td>
-                <a href="#"
-                    style="color:green">
-                    Update
-                </a>
-                <a href="#"
-                    style="color:Red"
-                    onclick="return confirm('Are you sure?')">
-                    Delete
-                </a>
-            </td>
+
         </tr>
         @endforeach
 

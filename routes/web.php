@@ -40,6 +40,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::post('/update_product/{id}', [AdminController::class, 'postupdateproduct'])->name('admin.postupdateproduct');
     Route::any('/search', [AdminController::class, 'searchproduct'])->name('admin.searchproduct');
     Route::get('/view_orders', [AdminController::class, 'vieworders'])->name('admin.vieworders');
+    Route::post('/change_status/{id}', [AdminController::class, 'changestatus'])->name('admin.change_status');
 });
 
 Route::middleware('auth')->group(function () {
