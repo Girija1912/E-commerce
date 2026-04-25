@@ -24,6 +24,9 @@ Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middlewa
 Route::get('/dashboard', [UserController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/myorders', [UserController::class, 'myorders'])
+    ->middleware(['auth', 'verified'])->name('myorders');
+
 Route::middleware('auth', 'admin')->group(function () {
     Route::get('/add_category', [AdminController::class, "addcategory"])->name('admin.addcategory');
     Route::post('/add_category', [AdminController::class, "postaddcategory"])->name('admin.postaddcategory');
@@ -41,6 +44,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::any('/search', [AdminController::class, 'searchproduct'])->name('admin.searchproduct');
     Route::get('/view_orders', [AdminController::class, 'vieworders'])->name('admin.vieworders');
     Route::post('/change_status/{id}', [AdminController::class, 'changestatus'])->name('admin.change_status');
+    Route::get('/downloadpdf/{id}', [AdminController::class, 'downloadpdf'])->name('admin.downloadpdf');
 });
 
 Route::middleware('auth')->group(function () {

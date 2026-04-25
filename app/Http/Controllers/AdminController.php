@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
@@ -164,5 +165,12 @@ class AdminController extends Controller
         $orders->status = $request->status;
         $orders->save();
         return redirect()->back();
+    }
+
+    public function downloadpdf($id)
+    {
+        $data = Order::findOrFail($id);
+        $pdf = Pdf::loadView('admin.invoice', compact('data'));
+        return $pdf->download('invoice.pdf');
     }
 }

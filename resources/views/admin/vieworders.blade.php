@@ -13,6 +13,7 @@
             <th>Product_price</th>
             <th>Product_image</th>
             <th>Status</th>
+            <th>Action</th>
 
         </tr>
     </thead>
@@ -36,7 +37,7 @@
                     <input type="submit" value="submit" name="submit" onclick="return confirm('Are you sure?')">
                 </form>
             </td>
-
+            <td><a href="{{route('admin.downloadpdf',$order->id)}}" class="btn btn-primary">Download PDF</a></td>
         </tr>
         @endforeach
 
